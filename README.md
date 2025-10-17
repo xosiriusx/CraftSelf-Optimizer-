@@ -8,7 +8,7 @@ The Crafts Self-Referential Law states:
 
 > For a system whose state scales as sₙ ~ n^(a+1), the natural increment scales as Δsₙ ~ n^a.
 
-This repository provides a minimal reference implementation of the CraftSelf Optimizer — a hybrid optimizer that enforces exponent-structured update magnitudes derived from the Craft +1 Law.
+This repository provides a minimal reference implementation of the CraftSelf Optimizer — a hybrid optimizer that enforces exponent-structured update magnitudes derived from the Crafts Self-Referential Law.
 
 ## Priority / Reference
 
