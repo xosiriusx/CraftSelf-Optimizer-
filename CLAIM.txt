@@ -1,0 +1,8 @@
+CraftSelf Optimizer — Public Claim
+
+Creator: Christian Powell Craft
+Project name: CraftSelf Optimizer
+Theory DOI: https://doi.org/10.5281/zenodo.17206305
+Repository first published (timestamped): This GitHub repo commit
+
+This repository is the reference implementation of the Craft +1 Law optimizer family and is publicly released by the author above for research and educational use. Commercial users must contact the author for licensing.
