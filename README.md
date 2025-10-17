@@ -1,6 +1,6 @@
 # CraftSelf Optimizer
 
-Implementation of the **Craft +1 Law** applied to neural network optimization.
+Implementation of the **Crafts Self-Referential Law** applied to neural network optimization.
 
 ## Overview
 
