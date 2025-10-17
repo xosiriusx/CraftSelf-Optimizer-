@@ -4,7 +4,7 @@ Implementation of the **Craft +1 Law** applied to neural network optimization.
 
 ## Overview
 
-The Craft +1 Law states:
+The Crafts Self-Referential Law states:
 
 > For a system whose state scales as sₙ ~ n^(a+1), the natural increment scales as Δsₙ ~ n^a.
 
