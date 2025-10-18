@@ -31,6 +31,6 @@ If you use this optimizer in academic work, **please cite the DOI above**.
 ## Quick Usage (PyTorch)
 
 ```python
-from craft_optimizer.py import CraftOptimizer
+from craft_optimizer import CraftOptimizer
 # model = ... your model ...
 optimizer = CraftOptimizer(model.parameters(), a=0.0, k=1e-3, lr=1.0)
