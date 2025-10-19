@@ -1,4 +1,4 @@
-# mCraftSelfOptimizer.py
+# CraftSelfOptimizer.py
 # Optimized CraftSelfOptimizer for maximum efficiency
 # Builds on Crafts Self-Referential Law with adaptive tuning and hybrid switching
 
