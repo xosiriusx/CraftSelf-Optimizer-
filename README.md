@@ -31,51 +31,44 @@ If you use this optimizer in academic work, **please cite the DOI above**.
 ## Quick Usage (PyTorch)
 
 ```python
-# Quick Use Example for MaxEfficiencyCraftSelfOptimizer
-# Works out of the box
-
+# CraftSelfOptimizer hybrid demo 
 import torch
 from torch import nn
-from torch.utils.data import DataLoader
 from torch.optim import Adam
+from mCraftSelfOptimizer import MaxEfficiencyCraftSelfOptimizer as CraftSelfOptimizer
+from torch.utils.data import DataLoader
 
-# Import your optimizer
-# Make sure the file max_efficiency_craft_optimizer.py is in the same folder
-from max_efficiency_craft_optimizer import MaxEfficiencyCraftSelfOptimizer
-
-# Create a simple model
-model = nn.Linear(10, 1)
-
-# Create a synthetic dataset
-x = torch.randn(100, 10)
-y = torch.randn(100, 1)
+# Larger synthetic dataset
+x = torch.randn(2000, 20)  # more samples, higher dimensionality
+y = torch.randn(2000, 1)
 dataset = list(zip(x, y))
-dataloader = DataLoader(dataset, batch_size=10, shuffle=True)
+dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
 
-# Define loss function
+# Slightly bigger model
+model = nn.Sequential(
+    nn.Linear(20, 64),
+    nn.ReLU(),
+    nn.Linear(64, 1)
+)
 loss_fn = nn.MSELoss()
 
-# Instantiate the optimizer
-optimizer = MaxEfficiencyCraftSelfOptimizer(
+# CraftSelfOptimizer with hybrid Adam fallback
+optimizer = CraftSelfOptimizer(
     model.parameters(),
-    a=0.5,
-    k=1e-3,
-    lr=0.01,
-    beta=0.9,
-    eps=1e-8,
-    max_scale=10.0,
+    a=0.5, k=1e-3, lr=0.01,
     auto_tune=True,
-    hybrid_optimizer=Adam(model.parameters(), lr=0.001),  # Optional hybrid
-    clip_grad=1.0,
-    min_scale=1e-4
+    hybrid_optimizer=Adam(model.parameters(), lr=0.001)
 )
 
 # Training loop
-for epoch in range(10):  # reduced epochs for quick testing
+for epoch in range(30):  # more epochs to show adaptive behavior
+    epoch_loss = 0
     for data, target in dataloader:
         optimizer.zero_grad()
-        out = model(data)
-        loss = loss_fn(out, target)
+        output = model(data)
+        loss = loss_fn(output, target)
         loss.backward()
         optimizer.step()
-    print(f"Epoch {epoch+1} loss: {loss.item():.6f}")
+        epoch_loss += loss.item() * data.size(0)
+    avg_loss = epoch_loss / len(dataset)
+    print(f"Epoch {epoch+1} average loss: {avg_loss:.6f}")
