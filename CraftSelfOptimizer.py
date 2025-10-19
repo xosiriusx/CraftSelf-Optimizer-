@@ -1,4 +1,4 @@
-# max_efficiency_craft_optimizer.py
+# mCraftSelfOptimizer.py
 # Optimized CraftSelfOptimizer for maximum efficiency
 # Builds on Crafts Self-Referential Law with adaptive tuning and hybrid switching
 
