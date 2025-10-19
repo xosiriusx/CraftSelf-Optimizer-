@@ -5,7 +5,7 @@
 import torch
 from torch.optim import Optimizer
 
-class MaxEfficiencyCraftSelfOptimizer(Optimizer):
+class CraftSelfOptimizer(Optimizer):
     """
     Highly efficient CraftSelfOptimizer with adaptive tuning and hybrid switching.
     Maximizes convergence speed and stability while aligning with Crafts Self-Referential Law.
@@ -88,7 +88,7 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader
 from torch.optim import Adam
-from max_efficiency_craft_optimizer import MaxEfficiencyCraftSelfOptimizer
+from CraftSelfOptimizer import CraftSelfOptimizer
 
 # Synthetic dataset
 x = torch.randn(100, 10)
@@ -98,7 +98,7 @@ dataloader = DataLoader(dataset, batch_size=10, shuffle=True)
 
 model = nn.Linear(10, 1)
 loss_fn = nn.MSELoss()
-optimizer = MaxEfficiencyCraftSelfOptimizer(
+optimizer = CraftSelfOptimizer(
     model.parameters(),
     a=0.5, k=1e-3, lr=0.01, beta=0.9, eps=1e-8, max_scale=10.0,
     auto_tune=True,  # Enable adaptive a and k
